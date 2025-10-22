@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMPEL - Sistem Informasi dan Pembelajaran Elektronik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+        .toast.show {
+            transform: translateX(0);
+        }
+        .toast.success {
+            background-color: #10B981;
+        }
+        .toast.error {
+            background-color: #EF4444;
+        }
+        .toast.info {
+            background-color: #3B82F6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Landing Page -->
+    <div id="landingPage" class="min-h-screen">
+        <!-- Header -->
+        <header class="gradient-bg text-white">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                            <span class="text-purple-600 font-bold text-xl">S</span>
+                        </div>
+                        <h1 class="text-2xl font-bold">SIMPEL</h1>
+                    </div>
+                    <div class="space-x-4">
+                        <button onclick="showLogin()" class="bg-white text-purple-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
+                            Masuk
+                        </button>
+                        <button onclick="showRegister()" class="border-2 border-white px-6 py-2 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition">
+                            Daftar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="gradient-bg text-white py-20">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Left Column - Text -->
+                    <div class="fade-in">
+                        <h2 class="text-5xl font-bold mb-6">
+                            Sistem Informasi dan<br>Pembelajaran Elektronik
+                        </h2>
+                        <p class="text-xl mb-8 opacity-90">
+                            Platform pembelajaran digital yang memudahkan guru, wali kelas, dan siswa dalam mengelola proses belajar mengajar dengan fitur micro learning yang inovatif.
+                        </p>
+                        <button onclick="showRegister()" class="bg-white text-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition transform hover:scale-105">
+                            Mulai Sekarang
+                        </button>
+                    </div>
+                    
+                    <!-- Right Column - Image -->
+                    <div class="fade-in flex justify-center lg:justify-end">
+                        <div class="w-full max-w-md h-64 bg-white/20 rounded-lg flex items-center justify-center">
+                            <span class="text-white text-lg">Ilustrasi Platform SIMPEL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h3 class="text-4xl font-bold text-center text-gray-800 mb-16">Fitur Unggulan</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 bg-blue-500 rounded-lg flex items-center justify-center mb-6">
+                            <span class="text-white text-2xl">📚</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-4">Micro Learning Platform</h4>
+                        <p class="text-gray-600">Platform pembelajaran dengan konten bite-sized yang mudah dipahami dan diakses kapan saja.</p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 bg-green-500 rounded-lg flex items-center justify-center mb-6">
+                            <span class="text-white text-2xl">🎯</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-4">Teaching Kit</h4>
+                        <p class="text-gray-600">Kumpulan materi dan tools mengajar yang membantu guru menyampaikan pembelajaran dengan efektif.</p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 bg-purple-500 rounded-lg flex items-center justify-center mb-6">
+                            <span class="text-white text-2xl">✅</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-4">Kehadiran & Perizinan</h4>
+                        <p class="text-gray-600">Sistem absensi digital dan pengelolaan perizinan yang terintegrasi dan mudah digunakan.</p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 bg-orange-500 rounded-lg flex items-center justify-center mb-6">
+                            <span class="text-white text-2xl">📊</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-4">Penilaian & Pelaporan</h4>
+                        <p class="text-gray-600">Tools penilaian komprehensif dengan laporan otomatis untuk monitoring progress siswa.</p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 bg-red-500 rounded-lg flex items-center justify-center mb-6">
+                            <span class="text-white text-2xl">📢</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-4">Pengumuman</h4>
+                        <p class="text-gray-600">Sistem notifikasi dan pengumuman real-time untuk komunikasi yang efektif.</p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-8 rounded-xl card-hover">
+                        <div class="w-16 h-16 bg-indigo-500 rounded-lg flex items-center justify-center mb-6">
+                            <span class="text-white text-2xl">👥</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-4">Multi Dashboard</h4>
+                        <p class="text-gray-600">Dashboard khusus untuk guru, wali kelas, dan siswa dengan fitur yang disesuaikan peran.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Registration Form -->
+    <div id="registerPage" class="min-h-screen bg-gray-50 hidden">
+        <div class="flex items-center justify-center min-h-screen py-12 px-4">
+            <div class="max-w-md w-full space-y-8">
+                <div class="text-center">
+                    <div class="flex justify-center mb-4">
+                        <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-2xl">S</span>
+                        </div>
+                    </div>
+                    <h2 class="text-3xl font-bold text-gray-900">Daftar ke SIMPEL</h2>
+                    <p class="mt-2 text-gray-600">Bergabunglah dengan platform pembelajaran digital</p>
+                </div>
+                
+                <form id="registerForm" class="mt-8 space-y-6 bg-white p-8 rounded-xl shadow-lg">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
+                            <input type="text" id="regName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="regEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                            <input type="password" id="regPassword" required minlength="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <p class="text-xs text-gray-500 mt-1">Minimal 6 karakter</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Role</label>
+                            <select id="regRole" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="">Pilih Role</option>
+                                <option value="guru">Guru</option>
+                                <option value="wali_kelas">Wali Kelas</option>
+                                <option value="siswa">Siswa</option>
+                            </select>
+                        </div>
+                        
+                        <div id="additionalFields"></div>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition font-semibold">
+                        Daftar Sekarang
+                    </button>
+                    
+                    <div class="text-center">
+                        <span class="text-gray-600">Sudah punya akun? </span>
+                        <button type="button" onclick="showLogin()" class="text-purple-600 hover:text-purple-700 font-semibold">
+                            Masuk di sini
+                        </button>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="button" onclick="showLanding()" class="text-gray-500 hover:text-gray-700">
+                            ← Kembali ke Beranda
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginPage" class="min-h-screen bg-gray-50 hidden">
+        <div class="flex items-center justify-center min-h-screen py-12 px-4">
+            <div class="max-w-md w-full space-y-8">
+                <div class="text-center">
+                    <div class="flex justify-center mb-4">
+                        <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-2xl">S</span>
+                        </div>
+                    </div>
+                    <h2 class="text-3xl font-bold text-gray-900">Masuk ke SIMPEL</h2>
+                    <p class="mt-2 text-gray-600">Akses dashboard pembelajaran Anda</p>
+                </div>
+                
+                <form id="loginForm" class="mt-8 space-y-6 bg-white p-8 rounded-xl shadow-lg">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="loginEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                            <input type="password" id="loginPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition font-semibold">
+                        Masuk
+                    </button>
+                    
+                    <div class="text-center">
+                        <span class="text-gray-600">Belum punya akun? </span>
+                        <button type="button" onclick="showRegister()" class="text-purple-600 hover:text-purple-700 font-semibold">
+                            Daftar di sini
+                        </button>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="button" onclick="showLanding()" class="text-gray-500 hover:text-gray-700">
+                            ← Kembali ke Beranda
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Pages -->
+    <!-- Guru Dashboard -->
+    <div id="guruDashboard" class="min-h-screen bg-gray-50 hidden">
+        <nav class="bg-white shadow-sm border-b">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold">S</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">SIMPEL - Dashboard Guru</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-700" id="guruName">Selamat datang, Guru!</span>
+                        <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+                            Keluar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <!-- Micro Learning Section -->
+            <div class="bg-white overflow-hidden shadow rounded-lg mb-6">
+                <div class="px-4 py-5 sm:p-6">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Micro Learning Platform</h3>
+                    
+                    <!-- Create Course Button -->
+                    <div class="mb-6">
+                        <button onclick="showCreateCourse()" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition font-semibold">
+                            + Buat Kursus Baru
+                        </button>
+                    </div>
+                    <!-- Course List -->
+                    <div id="courseList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Sample courses will be added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wali Kelas Dashboard -->
+    <div id="waliKelasDashboard" class="min-h-screen bg-gray-50 hidden">
+        <nav class="bg-white shadow-sm border-b">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold">S</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">SIMPEL - Dashboard Wali Kelas</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-700" id="waliName">Selamat datang, Wali Kelas!</span>
+                        <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+                            Keluar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="px-4 py-5 sm:p-6">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Micro Learning - Akses Kursus</h3>
+                    <div id="waliCourseList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Available courses will be shown here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Siswa Dashboard -->
+    <div id="siswaDashboard" class="min-h-screen bg-gray-50 hidden">
+        <nav class="bg-white shadow-sm border-b">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold">S</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">SIMPEL - Dashboard Siswa</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-700" id="siswaName">Selamat datang, Siswa!</span>
+                        <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+                            Keluar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="px-4 py-5 sm:p-6">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Kursus Tersedia</h3>
+                    <div id="siswaCourseList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Available courses will be shown here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Course Modal -->
+    <div id="createCourseModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <h3 class="text-xl font-bold text-gray-900 mb-4" id="createCourseModalTitle">Buat Kursus Baru</h3>
+            <form id="createCourseForm">
+                <input type="hidden" id="editCourseId">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Judul Kursus</label>
+                        <input type="text" id="courseTitle" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
+                        <textarea id="courseDescription" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 h-24"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Durasi (menit)</label>
+                        <input type="number" id="courseDuration" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Konten Pembelajaran</label>
+                        <textarea id="courseContent" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 h-32"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-3 mt-6">
+                    <button type="button" onclick="hideCreateCourse()" class="px-4 py-2 text-gray-600 hover:text-gray-800">
+                        Batal
+                    </button>
+                    <button type="submit" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">
+                        <span id="createCourseButtonText">Buat Kursus</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Course Detail Modal -->
+    <div id="courseDetailModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-96 overflow-y-auto">
+            <div class="flex justify-between items-start mb-4">
+                <h3 id="detailTitle" class="text-xl font-bold text-gray-900"></h3>
+                <button onclick="hideCourseDetail()" class="text-gray-400 hover:text-gray-600">
+                    <span class="text-2xl">&times;</span>
+                </button>
+            </div>
+            <div id="detailContent" class="space-y-4">
+                <!-- Course content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let currentUser = null;
+        let courses = [];
+        let editingCourseId = null;
+
+        // Initialize data from localStorage
+        function initializeData() {
+            // Load users from localStorage
+            const storedUsers = localStorage.getItem('simpel_users');
+            if (!storedUsers) {
+                // Create sample users if none exist
+                const sampleUsers = [
+                    { id: 1, name: "Guru Matematika", email: "guru@example.com", password: "password123", role: "guru", matpel: "Matematika" },
+                    { id: 2, name: "Wali Kelas 1A", email: "wali@example.com", password: "password123", role: "wali_kelas", kelas_ampu: "1A" },
+                    { id: 3, name: "Siswa Contoh", email: "siswa@example.com", password: "password123", role: "siswa", kelas: "1A" }
+                ];
+                localStorage.setItem('simpel_users', JSON.stringify(sampleUsers));
+            }
+
+            // Load courses from localStorage
+            const storedCourses = localStorage.getItem('simpel_courses');
+            if (!storedCourses) {
+                // Create sample courses if none exist
+                const sampleCourses = [
+                    {
+                        id: 1,
+                        title: "Pengenalan Matematika Dasar",
+                        description: "Kursus micro learning untuk memahami konsep dasar matematika dengan mudah",
+                        duration: 15,
+                        author: "Guru Matematika",
+                        authorId: 1,
+                        content: "Materi pembelajaran matematika dasar meliputi penjumlahan, pengurangan, perkalian, dan pembagian. Setiap konsep dijelaskan dengan contoh praktis dan latihan interaktif."
+                    },
+                    {
+                        id: 2,
+                        title: "Bahasa Indonesia untuk Pemula",
+                        description: "Pembelajaran bahasa Indonesia yang menyenangkan dalam format bite-sized",
+                        duration: 20,
+                        author: "Guru Bahasa",
+                        authorId: 1,
+                        content: "Pelajari tata bahasa Indonesia, kosakata, dan cara menulis yang baik dan benar. Materi disajikan dengan contoh-contoh menarik dari kehidupan sehari-hari."
+                    }
+                ];
+                localStorage.setItem('simpel_courses', JSON.stringify(sampleCourses));
+                courses = [...sampleCourses];
+            } else {
+                courses = JSON.parse(storedCourses);
+            }
+        }
+
+        // Toast notification function
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type} show`;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Navigation functions
+        function showLanding() {
+            hideAllPages();
+            document.getElementById('landingPage').classList.remove('hidden');
+        }
+
+        function showRegister() {
+            hideAllPages();
+            document.getElementById('registerPage').classList.remove('hidden');
+        }
+
+        function showLogin() {
+            hideAllPages();
+            document.getElementById('loginPage').classList.remove('hidden');
+        }
+
+        function hideAllPages() {
+            const pages = ['landingPage', 'registerPage', 'loginPage', 'guruDashboard', 'waliKelasDashboard', 'siswaDashboard'];
+            pages.forEach(page => {
+                document.getElementById(page).classList.add('hidden');
+            });
+        }
+
+        // Registration form handling
+        document.getElementById('regRole').addEventListener('change', function() {
+            const role = this.value;
+            const additionalFields = document.getElementById('additionalFields');
+            
+            if (role === 'siswa') {
+                additionalFields.innerHTML = `
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Kelas</label>
+                        <select id="regKelas" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <option value="">Pilih Kelas</option>
+                            <option value="1A">1A</option>
+                            <option value="1B">1B</option>
+                            <option value="2A">2A</option>
+                            <option value="2B">2B</option>
+                            <option value="3A">3A</option>
+                            <option value="3B">3B</option>
+                        </select>
+                    </div>
+                `;
+            } else if (role === 'wali_kelas') {
+                additionalFields.innerHTML = `
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Kelas yang Diampu</label>
+                        <select id="regKelasAmpu" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <option value="">Pilih Kelas</option>
+                            <option value="1A">1A</option>
+                            <option value="1B">1B</option>
+                            <option value="2A">2A</option>
+                            <option value="2B">2B</option>
+                            <option value="3A">3A</option>
+                            <option value="3B">3B</option>
+                        </select>
+                    </div>
+                `;
+            } else if (role === 'guru') {
+                additionalFields.innerHTML = `
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Mata Pelajaran</label>
+                        <input type="text" id="regMatpel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Contoh: Matematika">
+                    </div>
+                `;
+            } else {
+                additionalFields.innerHTML = '';
+            }
+        });
+
+        // Registration form submission
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Mendaftar...';
+            submitButton.disabled = true;
+            
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const role = document.getElementById('regRole').value;
+            
+            // Check if email already exists
+            const users = JSON.parse(localStorage.getItem('simpel_users') || '[]');
+            const existingUser = users.find(user => user.email === email);
+            
+            if (existingUser) {
+                showToast('Email sudah terdaftar!', 'error');
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                return;
+            }
+            
+            // Create new user object
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                password,
+                role
+            };
+            
+            // Add role-specific data
+            if (role === 'siswa' && document.getElementById('regKelas')) {
+                newUser.kelas = document.getElementById('regKelas').value;
+            } else if (role === 'wali_kelas' && document.getElementById('regKelasAmpu')) {
+                newUser.kelas_ampu = document.getElementById('regKelasAmpu').value;
+            } else if (role === 'guru' && document.getElementById('regMatpel')) {
+                newUser.matpel = document.getElementById('regMatpel').value;
+            }
+            
+            // Save user to localStorage
+            users.push(newUser);
+            localStorage.setItem('simpel_users', JSON.stringify(users));
+            
+            showToast('Pendaftaran berhasil! Silakan masuk.', 'success');
+            this.reset();
+            document.getElementById('additionalFields').innerHTML = '';
+            showLogin();
+            
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        });
+
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Masuk...';
+            submitButton.disabled = true;
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Find user in localStorage
+            const users = JSON.parse(localStorage.getItem('simpel_users') || '[]');
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                this.reset();
+                showDashboard(user.role);
+                showToast(`Selamat datang, ${user.name}!`, 'success');
+            } else {
+                showToast('Email atau password salah!', 'error');
+            }
+            
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        });
+
+        function showDashboard(role) {
+            hideAllPages();
+            
+            if (role === 'guru') {
+                document.getElementById('guruDashboard').classList.remove('hidden');
+                document.getElementById('guruName').textContent = `Selamat datang, ${currentUser.name}!`;
+                loadGuruCourses();
+            } else if (role === 'wali_kelas') {
+                document.getElementById('waliKelasDashboard').classList.remove('hidden');
+                document.getElementById('waliName').textContent = `Selamat datang, ${currentUser.name}!`;
+                loadWaliCourses();
+            } else if (role === 'siswa') {
+                document.getElementById('siswaDashboard').classList.remove('hidden');
+                document.getElementById('siswaName').textContent = `Selamat datang, ${currentUser.name}!`;
+                loadSiswaCourses();
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            showLanding();
+            showToast('Anda telah keluar.', 'info');
+        }
+
+        // Course management
+        function showCreateCourse(courseId = null) {
+            editingCourseId = courseId;
+            const modal = document.getElementById('createCourseModal');
+            const title = document.getElementById('createCourseModalTitle');
+            const buttonText = document.getElementById('createCourseButtonText');
+            
+            if (courseId) {
+                // Edit mode
+                const course = courses.find(c => c.id === courseId);
+                if (course) {
+                    document.getElementById('editCourseId').value = course.id;
+                    document.getElementById('courseTitle').value = course.title;
+                    document.getElementById('courseDescription').value = course.description;
+                    document.getElementById('courseDuration').value = course.duration;
+                    document.getElementById('courseContent').value = course.content;
+                    title.textContent = 'Edit Kursus';
+                    buttonText.textContent = 'Simpan Perubahan';
+                }
+            } else {
+                // Create mode
+                document.getElementById('createCourseForm').reset();
+                document.getElementById('editCourseId').value = '';
+                title.textContent = 'Buat Kursus Baru';
+                buttonText.textContent = 'Buat Kursus';
+            }
+            
+            modal.classList.remove('hidden');
+        }
+
+        function hideCreateCourse() {
+            document.getElementById('createCourseModal').classList.add('hidden');
+            document.getElementById('createCourseForm').reset();
+            editingCourseId = null;
+        }
+
+        document.getElementById('createCourseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('courseTitle').value;
+            const description = document.getElementById('courseDescription').value;
+            const duration = parseInt(document.getElementById('courseDuration').value);
+            const content = document.getElementById('courseContent').value;
+            const courseId = document.getElementById('editCourseId').value;
+            
+            if (courseId) {
+                // Update existing course
+                const courseIndex = courses.findIndex(c => c.id === parseInt(courseId));
+                if (courseIndex !== -1) {
+                    courses[courseIndex] = {
+                        ...courses[courseIndex],
+                        title,
+                        description,
+                        duration,
+                        content
+                    };
+                    showToast('Kursus berhasil diperbarui!', 'success');
+                }
+            } else {
+                // Create new course
+                const newCourse = {
+                    id: Date.now(),
+                    title,
+                    description,
+                    duration,
+                    author: currentUser.name,
+                    authorId: currentUser.id,
+                    content
+                };
+                
+                courses.push(newCourse);
+                showToast('Kursus berhasil dibuat!', 'success');
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('simpel_courses', JSON.stringify(courses));
+            
+            hideCreateCourse();
+            loadGuruCourses();
+        });
+
+        function deleteCourse(courseId) {
+            if (confirm('Apakah Anda yakin ingin menghapus kursus ini?')) {
+                courses = courses.filter(c => c.id !== courseId);
+                localStorage.setItem('simpel_courses', JSON.stringify(courses));
+                loadGuruCourses();
+                showToast('Kursus berhasil dihapus!', 'success');
+            }
+        }
+
+        function loadGuruCourses() {
+            const courseList = document.getElementById('courseList');
+            courseList.innerHTML = '';
+            
+            // Filter courses by current user
+            const userCourses = courses.filter(course => course.authorId === currentUser.id);
+            
+            if (userCourses.length === 0) {
+                courseList.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <div class="text-gray-400 text-6xl mb-4">📚</div>
+                        <h3 class="text-xl font-medium text-gray-500 mb-2">Belum ada kursus</h3>
+                        <p class="text-gray-400">Mulai dengan membuat kursus pertama Anda</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            userCourses.forEach(course => {
+                const courseCard = createCourseCard(course, true);
+                courseList.appendChild(courseCard);
+            });
+        }
+
+        function loadWaliCourses() {
+            const courseList = document.getElementById('waliCourseList');
+            courseList.innerHTML = '';
+            
+            if (courses.length === 0) {
+                courseList.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <div class="text-gray-400 text-6xl mb-4">📚</div>
+                        <h3 class="text-xl font-medium text-gray-500 mb-2">Belum ada kursus tersedia</h3>
+                        <p class="text-gray-400">Guru belum membuat kursus apapun</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            courses.forEach(course => {
+                const courseCard = createCourseCard(course, false);
+                courseList.appendChild(courseCard);
+            });
+        }
+
+        function loadSiswaCourses() {
+            const courseList = document.getElementById('siswaCourseList');
+            courseList.innerHTML = '';
+            
+            if (courses.length === 0) {
+                courseList.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <div class="text-gray-400 text-6xl mb-4">📚</div>
+                        <h3 class="text-xl font-medium text-gray-500 mb-2">Belum ada kursus tersedia</h3>
+                        <p class="text-gray-400">Guru belum membuat kursus apapun</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            courses.forEach(course => {
+                const courseCard = createCourseCard(course, false);
+                courseList.appendChild(courseCard);
+            });
+        }
+
+        function createCourseCard(course, isOwner) {
+            const div = document.createElement('div');
+            div.className = 'bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl card-hover';
+            
+            div.innerHTML = `
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
+                        <span class="text-white text-xl">📚</span>
+                    </div>
+                    <span class="text-sm text-purple-600 font-semibold">${course.duration} menit</span>
+                </div>
+                <h4 class="text-lg font-bold text-gray-800 mb-2">${course.title}</h4>
+                <p class="text-gray-600 text-sm mb-4">${course.description}</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-500">oleh ${course.author}</span>
+                    <div class="flex space-x-2">
+                        ${isOwner ? `
+                            <button onclick="event.stopPropagation(); showCreateCourse(${course.id})" class="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600 transition">
+                                Edit
+                            </button>
+                            <button onclick="event.stopPropagation(); deleteCourse(${course.id})" class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 transition">
+                                Hapus
+                            </button>
+                        ` : ''}
+                        <button onclick="event.stopPropagation(); showCourseDetail(${course.id})" class="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-700 transition">
+                            ${isOwner ? 'Lihat' : 'Mulai'}
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return div;
+        }
+
+        function showCourseDetail(courseId) {
+            const course = courses.find(c => c.id === courseId);
+            if (!course) return;
+            
+            document.getElementById('detailTitle').textContent = course.title;
+            document.getElementById('detailContent').innerHTML = `
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Deskripsi:</h4>
+                        <p class="text-gray-600">${course.description}</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Durasi:</h4>
+                        <p class="text-gray-600">${course.duration} menit</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Pengajar:</h4>
+                        <p class="text-gray-600">${course.author}</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Konten Pembelajaran:</h4>
+                        <p class="text-gray-600">${course.content}</p>
+                    </div>
+                    <div class="pt-4">
+                        <button class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition font-semibold w-full">
+                            Mulai Pembelajaran
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('courseDetailModal').classList.remove('hidden');
+        }
+
+        function hideCourseDetail() {
+            document.getElementById('courseDetailModal').classList.add('hidden');
+        }
+
+        // Initialize the app
+        initializeData();
+        showLanding();
+    </script>
+</body>
+</html>
