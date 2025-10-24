@@ -852,62 +852,66 @@
                         </div>
 
                         <!-- Quick Actions -->
-                        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-hover">
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Aksi Cepat</h3>
-                            
-                            <div class="grid grid-cols-2 gap-4">
-                                <button onclick="openJournalModal()" class="bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-lg transition-colors">
-                                    <i class="fas fa-book text-2xl mb-2"></i>
-                                    <p class="font-medium">Jurnal Mengajar</p>
-                                </button>
-                                
-                                <div class="relative group">
-                                    <button class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-lg transition-colors w-full">
-                                        <i class="fas fa-clipboard-check text-2xl mb-2"></i>
-                                        <p class="font-medium">Presensi</p>
-                                        <i class="fas fa-chevron-down text-xs mt-1"></i>
-                                    </button>
-                                    <div class="absolute bottom-full left-0 mb-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-                                        <div class="py-2">
-                                            <a href="https://idt.community.or.id/daftar-hadir-siswa" target="_blank" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-2">
-                                                <i class="fas fa-user-check text-green-500"></i>
-                                                <span>Absensi Siswa</span>
-                                            </a>
-                                            <button onclick="openUnderConstructionModal('Keterlambatan Siswa')" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-2">
-                                                <i class="fas fa-clock text-orange-500"></i>
-                                                <span>Keterlambatan Siswa</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <button class="bg-purple-500 hover:bg-purple-600 text-white p-4 rounded-lg transition-colors">
-                                    <i class="fas fa-star text-2xl mb-2"></i>
-                                    <p class="font-medium">Nilai Siswa</p>
-                                </button>
-                                
-                                <div class="relative group">
-                                    <button class="bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-lg transition-colors w-full">
-                                        <i class="fas fa-chart-bar text-2xl mb-2"></i>
-                                        <p class="font-medium">Laporan</p>
-                                        <i class="fas fa-chevron-down text-xs mt-1"></i>
-                                    </button>
-                                    <div class="absolute bottom-full left-0 mb-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-                                        <div class="py-2">
-                                            <a href="https://idt.community.or.id/izin-murid" target="_blank" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-2">
-                                                <i class="fas fa-user-clock text-blue-500"></i>
-                                                <span>Laporan Izin Siswa</span>
-                                            </a>
-                                            <button onclick="openUnderConstructionModal('Laporan Sikap Siswa')" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-2">
-                                                <i class="fas fa-user-check text-green-500"></i>
-                                                <span>Laporan Sikap Siswa</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-hover">
+    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Aksi Cepat</h3>
+    
+    <div class="grid grid-cols-2 gap-4">
+        <button onclick="openJournalModal()" class="bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-lg transition-colors">
+            <i class="fas fa-book text-2xl mb-2"></i>
+            <p class="font-medium">Jurnal Mengajar</p>
+        </button>
+        
+        <!-- Updated Presensi Section with Prayer Options -->
+        <div class="relative group">
+            <button class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-lg transition-colors w-full">
+                <i class="fas fa-clipboard-check text-2xl mb-2"></i>
+                <p class="font-medium">Presensi</p>
+                <i class="fas fa-chevron-down text-xs mt-1"></i>
+            </button>
+            <div class="absolute bottom-full left-0 mb-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                    <a href="https://idt.community.or.id/daftar-hadir-siswa" target="_blank" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-2">
+                        <i class="fas fa-user-check text-green-500"></i>
+                        <span>Absensi Siswa</span>
+                    </a>
+                    <button onclick="openPrayerAttendanceModal()" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-2">
+                        <i class="fas fa-mosque text-blue-500"></i>
+                        <span>Kehadiran Sholat</span>
+                    </button>
+                    <button onclick="openUnderConstructionModal('Keterlambatan Siswa')" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-2">
+                        <i class="fas fa-clock text-orange-500"></i>
+                        <span>Keterlambatan Siswa</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <button class="bg-purple-500 hover:bg-purple-600 text-white p-4 rounded-lg transition-colors">
+            <i class="fas fa-star text-2xl mb-2"></i>
+            <p class="font-medium">Nilai Siswa</p>
+        </button>
+        
+        <div class="relative group">
+            <button class="bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-lg transition-colors w-full">
+                <i class="fas fa-chart-bar text-2xl mb-2"></i>
+                <p class="font-medium">Laporan</p>
+                <i class="fas fa-chevron-down text-xs mt-1"></i>
+            </button>
+            <div class="absolute bottom-full left-0 mb-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <div class="py-2">
+                    <a href="https://idt.community.or.id/izin-murid" target="_blank" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-2">
+                        <i class="fas fa-user-clock text-blue-500"></i>
+                        <span>Laporan Izin Siswa</span>
+                    </a>
+                    <button onclick="openUnderConstructionModal('Laporan Sikap Siswa')" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-2">
+                        <i class="fas fa-user-check text-green-500"></i>
+                        <span>Laporan Sikap Siswa</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                     <!-- Tips Section -->
                     <div class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl p-6 mt-6 card-hover">
@@ -2028,6 +2032,166 @@
             </div>
         </div>
     </div>
+
+    <!-- Prayer Attendance Modal -->
+<div id="prayerAttendanceModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-6xl w-full max-h-[95vh] overflow-hidden transform transition-all">
+        <div class="gradient-bg text-white p-6 rounded-t-xl">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-bold">🕌 Presensi Kehadiran Sholat</h3>
+                <button onclick="closePrayerAttendanceModal()" class="text-white hover:text-gray-200">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="p-6 overflow-y-auto max-h-[calc(95vh-120px)]">
+            <!-- Teacher Info -->
+            <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900 dark:to-emerald-900 rounded-lg p-4 border border-green-200 dark:border-green-700 mb-6">
+                <div class="flex items-center justify-center">
+                    <img src="https://live.staticflickr.com/65535/54509797172_fa540c8b67_b.jpg"
+                          alt="Foto Guru"
+                          class="w-16 h-16 rounded-full object-cover border-4 border-white shadow-lg mr-4"
+                         onerror="this.src=''; this.alt='Avatar tidak dapat dimuat'; this.style.display='none';">
+                    <div class="text-center">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">👨‍🏫 Guru Pengampu</h3>
+                        <p class="text-green-600 dark:text-green-400 font-medium">Feri Dwi Hermawan, S.Pd.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Kelas XI RPL - SMK Negeri Pasirian</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prayer Selection and Date -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-6 border border-gray-200 dark:border-gray-700">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Pilih Sholat:</label>
+                        <select id="prayerSelect" class="w-full p-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:border-green-500 focus:outline-none transition-colors dark:bg-gray-700 dark:text-white">
+                            <option value="">-- Pilih Sholat --</option>
+                            <option value="dhuha">🌅 Sholat Dhuha</option>
+                            <option value="dhuhur">☀️ Sholat Dhuhur</option>
+                            <option value="ashar">🌇 Sholat Ashar</option>
+                            <option value="jumat">🕌 Sholat Jum'at</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Tanggal:</label>
+                        <input type="date" id="prayerAttendanceDate" class="w-full p-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:border-green-500 focus:outline-none transition-colors dark:bg-gray-700 dark:text-white">
+                    </div>
+                </div>
+                
+                <!-- Special Note for Jum'at -->
+                <div id="prayerJumatNote" class="mt-4 p-4 bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg hidden">
+                    <div class="flex items-start">
+                        <span class="text-blue-500 text-xl mr-2">ℹ️</span>
+                        <div>
+                            <h4 class="font-semibold text-blue-800 dark:text-blue-200">Catatan Sholat Jum'at</h4>
+                            <p class="text-blue-700 dark:text-blue-300 text-sm">Sholat Jum'at hanya diwajibkan untuk siswa laki-laki. Siswa perempuan dapat mengisi sholat Dhuhur.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student List -->
+            <div id="prayerStudentList" class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Daftar Siswa XI RPL</h2>
+                    <div class="flex gap-2 flex-wrap">
+                        <button onclick="markAllPrayerStatus('sholat')" class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg transition-colors text-sm">
+                            🕌 Semua Sholat
+                        </button>
+                        <button onclick="markAllPrayerStatus('berhalangan')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded-lg transition-colors text-sm">
+                            🚫 Semua Berhalangan
+                        </button>
+                        <button onclick="markAllPrayerStatus('tidak_sholat')" class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-lg transition-colors text-sm">
+                            ❌ Semua Tidak Sholat
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Loading State for Students -->
+                <div id="prayerStudentsLoading" class="text-center py-8">
+                    <div class="loading-spinner mb-4"></div>
+                    <p class="text-gray-600 dark:text-gray-400">Memuat data siswa...</p>
+                </div>
+                
+                <div id="prayerStudentsContainer" class="space-y-3 hidden">
+                    <!-- Students will be loaded here -->
+                </div>
+                
+                <!-- Summary -->
+                <div class="mt-8 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <h3 class="font-semibold text-gray-700 dark:text-gray-300 mb-2">Ringkasan Kehadiran Sholat:</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+                        <div class="bg-green-100 dark:bg-green-900 p-3 rounded-lg">
+                            <div class="text-xl font-bold text-green-600 dark:text-green-400" id="prayerSholatCount">0</div>
+                            <div class="text-xs text-green-700 dark:text-green-300">Sholat</div>
+                        </div>
+                        <div class="bg-yellow-100 dark:bg-yellow-900 p-3 rounded-lg">
+                            <div class="text-xl font-bold text-yellow-600 dark:text-yellow-400" id="prayerBerhalanganCount">0</div>
+                            <div class="text-xs text-yellow-700 dark:text-yellow-300">Berhalangan</div>
+                        </div>
+                        <div class="bg-red-100 dark:bg-red-900 p-3 rounded-lg">
+                            <div class="text-xl font-bold text-red-600 dark:text-red-400" id="prayerTidakSholatCount">0</div>
+                            <div class="text-xs text-red-700 dark:text-red-300">Tidak Sholat</div>
+                        </div>
+                        <div class="bg-gray-100 dark:bg-gray-600 p-3 rounded-lg">
+                            <div class="text-xl font-bold text-gray-600 dark:text-gray-300" id="prayerTotalCount">0</div>
+                            <div class="text-xs text-gray-700 dark:text-gray-300">Total</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="mt-6 text-center">
+                    <button onclick="validateAndSubmitPrayerAttendance()" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors shadow-lg">
+                        💾 Simpan Kehadiran Sholat
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Success Message -->
+            <div id="prayerSuccessMessage" class="hidden bg-green-100 dark:bg-green-900 border border-green-400 text-green-700 dark:text-green-300 px-4 py-3 rounded-lg mt-6">
+                <div class="flex items-center">
+                    <span class="text-xl mr-2">✅</span>
+                    <span>Data kehadiran sholat berhasil disimpan!</span>
+                </div>
+            </div>
+            
+            <!-- Error Message -->
+            <div id="prayerErrorMessage" class="hidden bg-red-100 dark:bg-red-900 border border-red-400 text-red-700 dark:text-red-300 px-4 py-3 rounded-lg mt-6">
+                <div class="flex items-start">
+                    <span class="text-xl mr-2">❌</span>
+                    <div>
+                        <div class="font-semibold mb-2">Error:</div>
+                        <div id="prayerErrorContent" class="text-sm"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confirmation Modal for Prayer Attendance -->
+<div id="prayerConfirmationModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 max-w-md w-full mx-4">
+        <div class="text-center mb-4">
+            <div class="text-4xl mb-2">🕌</div>
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Konfirmasi Penyimpanan</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 mb-6 text-center" id="prayerConfirmationText">
+            Anda akan menyimpan data kehadiran sholat. Pastikan data sudah benar sebelum melanjutkan.
+        </p>
+        <div class="flex gap-3">
+            <button onclick="hidePrayerConfirmationModal()" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 rounded-lg transition-colors">
+                Batal
+            </button>
+            <button onclick="submitPrayerAttendance()" class="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition-colors">
+                Ya, Simpan
+            </button>
+        </div>
+    </div>
+</div>
 
     <script>
         // Global state
@@ -3650,6 +3814,389 @@
         // Initialize the app
         initializeData();
         showLanding();
+
+        // Prayer Attendance Data and Functions
+let prayerStudentsData = [];
+let currentPrayer = '';
+let currentPrayerDate = '';
+
+// Prayer configuration
+const prayerConfig = {
+    'dhuha': {
+        name: 'Sholat Dhuha',
+        icon: '🌅',
+        time: 'Pagi',
+        color: 'bg-yellow-500'
+    },
+    'dhuhur': {
+        name: 'Sholat Dhuhur', 
+        icon: '☀️',
+        time: 'Siang',
+        color: 'bg-orange-500'
+    },
+    'ashar': {
+        name: 'Sholat Ashar',
+        icon: '🌇', 
+        time: 'Sore',
+        color: 'bg-red-500'
+    },
+    'jumat': {
+        name: 'Sholat Jum\'at',
+        icon: '🕌',
+        time: 'Jum\'at',
+        color: 'bg-blue-500',
+        note: 'Hanya untuk siswa laki-laki'
+    }
+};
+
+// Modal Functions for Prayer Attendance
+function openPrayerAttendanceModal() {
+    const modal = document.getElementById('prayerAttendanceModal');
+    modal.classList.remove('hidden');
+    
+    // Set today's date as default
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('prayerAttendanceDate').value = today;
+    currentPrayerDate = today;
+    
+    // Reset form
+    document.getElementById('prayerSelect').value = '';
+    document.getElementById('prayerJumatNote').classList.add('hidden');
+    document.getElementById('prayerSuccessMessage').classList.add('hidden');
+    document.getElementById('prayerErrorMessage').classList.add('hidden');
+    
+    // Load students data
+    loadPrayerStudents();
+}
+
+function closePrayerAttendanceModal() {
+    document.getElementById('prayerAttendanceModal').classList.add('hidden');
+    prayerStudentsData = [];
+}
+
+function hidePrayerConfirmationModal() {
+    document.getElementById('prayerConfirmationModal').classList.add('hidden');
+}
+
+// Event Listeners for Prayer Form
+document.getElementById('prayerSelect').addEventListener('change', function() {
+    const selectedPrayer = this.value;
+    const jumatNote = document.getElementById('prayerJumatNote');
+    
+    if (selectedPrayer) {
+        currentPrayer = selectedPrayer;
+        
+        // Show/hide Jum'at note
+        if (selectedPrayer === 'jumat') {
+            jumatNote.classList.remove('hidden');
+        } else {
+            jumatNote.classList.add('hidden');
+        }
+        
+        // Update student display if data is already loaded
+        if (prayerStudentsData.length > 0) {
+            displayPrayerStudents();
+        }
+    }
+});
+
+document.getElementById('prayerAttendanceDate').addEventListener('change', function() {
+    currentPrayerDate = this.value;
+});
+
+// Load Students for Prayer Attendance
+async function loadPrayerStudents() {
+    const loadingElement = document.getElementById('prayerStudentsLoading');
+    const containerElement = document.getElementById('prayerStudentsContainer');
+    
+    try {
+        // Show loading state
+        loadingElement.classList.remove('hidden');
+        containerElement.classList.add('hidden');
+        
+        // Use the same students data from the main dashboard
+        // For demo purposes, we'll use sample data
+        const sampleStudents = [
+            'AULIA AZZARA NUR RAMDANI',
+            'CHIKA AFINSA RAMADHANI', 
+            'RENO FIRMANSYAH',
+            'RISQI ADITYA',
+            'AUGUSTAV BRILLYAN SINDUARTHA',
+            'PUTRA PUGUH PRADANA',
+            'SALSAHIRA DUWI APRILIA',
+            'WAHYU EKA ADI PRATAMA',
+            'FIRDAUS ZIDDAN AZZAINURI',
+            'MARVELINO ALFRADO',
+            'MUHAMMAD EDI SANTOSO',
+            'NABILA NUR AZIZAH',
+            'ADINDA ANEZTYA ZAHRA',
+            'FARHAN DHIYA\'UL HAQ',
+            'RAFAEL ONIL MULYA PUTRA',
+            'REYHAN ALIF RAMADHAN',
+            'AYU DWI HANAFI',
+            'BRIANDA WISNU YUSENA',
+            'RAFI ARDIANSYAH EGI RAMADHAN',
+            'VALENTINO AFASHA SALEH',
+            'DINDA MAI SAFIRA',
+            'MUHAMMAD HATTA PRIMA NURRAHMAN',
+            'MUHAMMAD IRFAN KHOIRUL HIDAYAH',
+            'NUR RAHMAD HIDAYAT'
+        ];
+        
+        prayerStudentsData = sampleStudents.map((name, index) => ({
+            id: index + 1,
+            name: name,
+            nis: `2023${(index + 1).toString().padStart(3, '0')}`,
+            class: 'XI RPL',
+            gender: Math.random() > 0.5 ? 'Laki-laki' : 'Perempuan', // Random gender for demo
+            status: 'sholat' // default status
+        }));
+        
+        // Hide loading and show students
+        loadingElement.classList.add('hidden');
+        containerElement.classList.remove('hidden');
+        
+        // Display students
+        displayPrayerStudents();
+        
+    } catch (error) {
+        console.error('Error loading students data:', error);
+        
+        // Show error
+        loadingElement.innerHTML = `
+            <div class="text-center py-4">
+                <div class="text-red-500 text-4xl mb-2">❌</div>
+                <p class="text-red-600 mb-2">Gagal memuat data siswa</p>
+                <p class="text-gray-500 text-sm mb-4">${error.message}</p>
+                <button onclick="loadPrayerStudents()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
+                    Coba Lagi
+                </button>
+            </div>
+        `;
+    }
+}
+
+// Display Students for Prayer Attendance
+function displayPrayerStudents() {
+    const container = document.getElementById('prayerStudentsContainer');
+    container.innerHTML = '';
+    
+    if (!currentPrayer) {
+        container.innerHTML = `
+            <div class="text-center py-8">
+                <div class="text-gray-400 text-4xl mb-2">🕌</div>
+                <p class="text-gray-500">Silakan pilih jenis sholat terlebih dahulu</p>
+            </div>
+        `;
+        return;
+    }
+    
+    const prayer = prayerConfig[currentPrayer];
+    
+    prayerStudentsData.forEach((student, index) => {
+        const studentCard = document.createElement('div');
+        studentCard.className = 'flex items-center justify-between p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors';
+        
+        // Special styling for Jum'at based on gender
+        const isJumat = currentPrayer === 'jumat';
+        const isFemale = student.gender === 'Perempuan';
+        const jumatClass = isJumat && isFemale ? 'opacity-60' : '';
+        
+        studentCard.innerHTML = `
+            <div class="flex items-center ${jumatClass}">
+                <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-4">
+                    <span class="text-green-600 dark:text-green-400 font-semibold">${student.id}</span>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-800 dark:text-white">${student.name}</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">${prayer.icon} ${prayer.name} - ${student.class}</p>
+                    <div class="flex gap-2 mt-1">
+                        <span class="text-xs text-gray-500">NIS: ${student.nis}</span>
+                        <span class="text-xs text-gray-500">•</span>
+                        <span class="text-xs text-gray-500">${student.gender}</span>
+                    </div>
+                    ${isJumat && isFemale ? `<p class="text-xs text-orange-600 dark:text-orange-400 font-medium mt-1">⚠️ Tidak wajib Sholat Jum'at</p>` : ''}
+                </div>
+            </div>
+            <div class="flex gap-1 flex-wrap">
+                <button onclick="updatePrayerStatus(${index}, 'sholat')" 
+                        class="px-3 py-2 rounded-lg transition-colors text-sm ${student.status === 'sholat' ? 'bg-green-500 text-white' : 'bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-green-100 dark:hover:bg-green-900'}">
+                    🕌 Sholat
+                </button>
+                <button onclick="updatePrayerStatus(${index}, 'berhalangan')" 
+                        class="px-3 py-2 rounded-lg transition-colors text-sm ${student.status === 'berhalangan' ? 'bg-yellow-500 text-white' : 'bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-yellow-100 dark:hover:bg-yellow-900'}">
+                    🚫 Berhalangan
+                </button>
+                <button onclick="updatePrayerStatus(${index}, 'tidak_sholat')" 
+                        class="px-3 py-2 rounded-lg transition-colors text-sm ${student.status === 'tidak_sholat' ? 'bg-red-500 text-white' : 'bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-red-100 dark:hover:bg-red-900'}">
+                    ❌ Tidak Sholat
+                </button>
+            </div>
+        `;
+        
+        container.appendChild(studentCard);
+    });
+    
+    updatePrayerSummary();
+}
+
+function updatePrayerStatus(index, status) {
+    prayerStudentsData[index].status = status;
+    displayPrayerStudents();
+}
+
+function markAllPrayerStatus(status) {
+    prayerStudentsData.forEach(student => student.status = status);
+    displayPrayerStudents();
+}
+
+function updatePrayerSummary() {
+    const sholatCount = prayerStudentsData.filter(s => s.status === 'sholat').length;
+    const berhalanganCount = prayerStudentsData.filter(s => s.status === 'berhalangan').length;
+    const tidakSholatCount = prayerStudentsData.filter(s => s.status === 'tidak_sholat').length;
+    const totalCount = prayerStudentsData.length;
+    
+    document.getElementById('prayerSholatCount').textContent = sholatCount;
+    document.getElementById('prayerBerhalanganCount').textContent = berhalanganCount;
+    document.getElementById('prayerTidakSholatCount').textContent = tidakSholatCount;
+    document.getElementById('prayerTotalCount').textContent = totalCount;
+}
+
+// Validation and Submission
+function validateAndSubmitPrayerAttendance() {
+    const date = document.getElementById('prayerAttendanceDate').value;
+    const prayer = document.getElementById('prayerSelect').value;
+    
+    if (!date || !prayer) {
+        showPrayerError('Mohon lengkapi tanggal dan pilih jenis sholat!');
+        return;
+    }
+    
+    // Check if all students have status
+    const hasEmptyStatus = prayerStudentsData.some(student => !student.status);
+    if (hasEmptyStatus) {
+        showPrayerError('Mohon pastikan semua siswa memiliki status kehadiran!');
+        return;
+    }
+    
+    // Show confirmation modal
+    const prayerName = prayerConfig[prayer].name;
+    document.getElementById('prayerConfirmationText').textContent = 
+        `Anda akan menyimpan data kehadiran ${prayerName} untuk tanggal ${formatDate(date)}. Pastikan data sudah benar sebelum melanjutkan.`;
+    
+    document.getElementById('prayerConfirmationModal').classList.remove('hidden');
+}
+
+function showPrayerError(message) {
+    const errorMessage = document.getElementById('prayerErrorMessage');
+    const errorContent = document.getElementById('prayerErrorContent');
+    errorContent.textContent = message;
+    errorMessage.classList.remove('hidden');
+    
+    // Auto-hide after 8 seconds
+    setTimeout(() => {
+        errorMessage.classList.add('hidden');
+    }, 8000);
+}
+
+function showPrayerSuccess(message) {
+    const successMessage = document.getElementById('prayerSuccessMessage');
+    if (message) {
+        successMessage.querySelector('span').textContent = message;
+    }
+    successMessage.classList.remove('hidden');
+    
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+        successMessage.classList.add('hidden');
+    }, 5000);
+}
+
+// Submit Prayer Attendance
+async function submitPrayerAttendance() {
+    const date = document.getElementById('prayerAttendanceDate').value;
+    const prayer = document.getElementById('prayerSelect').value;
+    
+    // Show loading state
+    const submitButton = document.querySelector('#prayerConfirmationModal button[onclick="submitPrayerAttendance()"]');
+    const originalText = submitButton.innerHTML;
+    submitButton.innerHTML = '⏳ Menyimpan...';
+    submitButton.disabled = true;
+    
+    try {
+        const prayerName = prayerConfig[prayer].name;
+        
+        // Prepare attendance data
+        const attendanceRecords = prayerStudentsData.map(student => ({
+            timestamp: new Date().toISOString(),
+            date: date,
+            class: 'XI RPL',
+            prayer: prayerName,
+            studentName: student.name,
+            studentNis: student.nis,
+            studentGender: student.gender,
+            status: student.status,
+            teacher: 'Feri Dwi Hermawan, S.Pd.'
+        }));
+        
+        console.log('Saving prayer attendance data:', attendanceRecords);
+        
+        // Simulate API call delay
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        // Simulate successful submission
+        showPrayerSuccess(`Data kehadiran ${prayerName} berhasil disimpan untuk ${formatDate(date)}!`);
+        hidePrayerConfirmationModal();
+        
+        // Reset form after successful submission
+        setTimeout(() => {
+            prayerStudentsData.forEach(student => student.status = 'sholat');
+            displayPrayerStudents();
+        }, 1000);
+        
+    } catch (error) {
+        console.error('Error saving prayer attendance:', error);
+        showPrayerError(`Gagal menyimpan data: ${error.message}. Coba refresh halaman dan ulangi.`);
+    } finally {
+        // Restore button state
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+    }
+}
+
+// Helper function to format date
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    };
+    return date.toLocaleDateString('id-ID', options);
+}
+
+// Add loading spinner CSS
+const prayerStyles = `
+    .loading-spinner {
+        border: 3px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 3px solid #3498db;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+`;
+
+// Inject styles
+const styleSheet = document.createElement('style');
+styleSheet.textContent = prayerStyles;
+document.head.appendChild(styleSheet);
     </script>
 </body>
 </html>
